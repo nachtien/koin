@@ -1,4 +1,4 @@
 #!/bin/sh
 
-./gradlew publishMavenPublicationPublicationToSonatypeRepository --info
+../gradlew publishMavenPublicationPublicationToSonatypeRepository --info
 
