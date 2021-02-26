@@ -1,7 +1,7 @@
 apply plugin: 'org.jetbrains.kotlin.multiplatform'
 
 archivesBaseName = 'koin-core'
-description = 'Koin - simple dependency injection for Kotlin - ' + archivesBaseName
+
 def ideaActive = System.getProperty('idea.active') == 'true'
 
 kotlin {
@@ -123,4 +123,10 @@ kotlin {
     }
 }
 
-apply from: '../../gradle/publish2.gradle'
+ext {
+    PLATFORM="kmm"
+}
+
+apply from: "../../gradle/sources.gradle"
+apply from: "../../gradle/dokka.gradle"
+apply from: '../../gradle/publish-maven-central.gradle'

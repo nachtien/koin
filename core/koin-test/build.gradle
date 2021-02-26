@@ -1,19 +1,20 @@
 apply plugin: 'org.jetbrains.kotlin.multiplatform'
 
 archivesBaseName = 'koin-test'
-description = 'Koin - simple dependency injection for Kotlin - ' + archivesBaseName
 def ideaActive = System.getProperty('idea.active') == 'true'
 
 kotlin {
-    jvm()
+    jvm {
+        withJava()
+    }
     js() {
         nodejs()
         browser()
     }
 
-    if(ideaActive) {
-        macosX64("native")
-    }else{
+    if (ideaActive) {
+        macosX64("darwin")
+    } else {
         macosX64()
         iosArm32()
         iosArm64()
@@ -93,4 +94,10 @@ kotlin {
     }
 }
 
-apply from: '../../gradle/publish2.gradle'
+ext {
+    PLATFORM="kmm"
+}
+
+apply from: "../../gradle/sources.gradle"
+apply from: "../../gradle/dokka.gradle"
+apply from: '../../gradle/publish-maven-central.gradle'
