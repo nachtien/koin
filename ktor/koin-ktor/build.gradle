@@ -1,7 +1,6 @@
 apply plugin: 'kotlin'
 
 archivesBaseName = 'koin-ktor'
-description = 'Koin - simple dependency injection for Ktor'
 
 repositories {
     mavenCentral()
@@ -10,13 +9,19 @@ repositories {
 }
 
 dependencies {
-    compile "org.koin:koin-core:$koin_version"
-    compile "org.koin:koin-core-ext:$koin_version"
-    testImplementation "org.koin:koin-test-junit4:$koin_version"
+    compile "$koin_group:koin-core:$koin_version"
+    compile "$koin_group:koin-core-ext:$koin_version"
+    testImplementation "$koin_group:koin-test-junit4:$koin_version"
 
     // Ktor
     compile "io.ktor:ktor-server-core:$ktor_version"
     testImplementation "io.ktor:ktor-server-test-host:$ktor_version"
 }
 
-apply from: '../../gradle/publish.gradle'
+ext {
+    PLATFORM="jvm"
+}
+
+apply from: "../../gradle/sources.gradle"
+apply from: "../../gradle/dokka.gradle"
+apply from: '../../gradle/publish-maven-central.gradle'

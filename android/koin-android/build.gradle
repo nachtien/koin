@@ -14,10 +14,15 @@ android {
     defaultConfig {
         minSdkVersion android_min_version
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
-    api "org.koin:koin-core:$koin_version"
+    api "$koin_group:koin-core:$koin_version"
 
     implementation "androidx.appcompat:appcompat:$androidx_lib_version"
     api("androidx.lifecycle:lifecycle-viewmodel-savedstate:$androidx_savedstate") {
@@ -45,4 +50,10 @@ dependencies {
 
 }
 
-apply from: '../../gradle/publish-android.gradle'
+ext {
+    PLATFORM="android"
+}
+
+apply from: "../../gradle/sources-android.gradle"
+apply from: "../../gradle/dokka.gradle"
+apply from: '../../gradle/publish-maven-central.gradle'

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.ekito.myweatherapp.R
 import kotlinx.android.synthetic.main.activity_simple.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.scope.AndroidScopeComponent
+import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.core.scope.Scope
 import org.koin.sample.view.viewmodel.MyViewModelActivity
