@@ -43,12 +43,13 @@ if (secretPropsFile.exists()) {
     ext["ossrhPassword"] = System.getProperty('NEXUS_PASSWORD')
 }
 
-afterEvaluate { project ->
-    def pubComponent
-    if (PLATFORM == "kmm") { pubComponent = components.kotlin } else if (PLATFORM == "android") {pubComponent = components.release} else {pubComponent = components.java}
-    def sourcesArtifact = (PLATFORM == "kmm") ? jvmSourcesJar : sourcesJar
-    def implementations = (PLATFORM == "kmm") ? project.configurations.jvmImplementation : project.configurations.implementation
+def pubComponent
+if (PLATFORM == "kmm") { pubComponent = components.kotlin } else if (PLATFORM == "android") {pubComponent = components.release} else {pubComponent = components.java}
+def sourcesArtifact = (PLATFORM == "kmm") ? jvmSourcesJar : sourcesJar
+def implementations = (PLATFORM == "kmm") ? project.configurations.jvmImplementation : project.configurations.implementation
 
+
+afterEvaluate { project ->
     artifacts {
         archives sourcesArtifact, dokkaJar
     }
