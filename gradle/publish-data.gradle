@@ -1,0 +1,22 @@
+ext {
+    POM_NAME="Koin"
+    POM_DESCRIPTION="Koin - simple dependency injection for Kotlin"
+    POM_INCEPTION_YEAR="2017"
+    POM_URL="https://github.com/InsertKoinIO/koin"
+
+    POM_SCM_URL="https://github.com/InsertKoinIO/koin.git"
+    POM_SCM_CONNECTION="scm:git:git://github.com/InsertKoinIO/koin.git"
+    POM_SCM_DEV_CONNECTION="scm:git:ssh://git@github.com/InsertKoinIO/koin.git"
+
+    POM_LICENCE_NAME="The Apache Software License, Version 2.0"
+    POM_LICENCE_URL="https://www.apache.org/licenses/LICENSE-2.0.txt"
+    POM_LICENCE_DIST="repo"
+
+    POM_DEVELOPER_ID="arnaudgiuliani"
+    POM_DEVELOPER_NAME="Arnaud Giuliani"
+    POM_DEVELOPER_EMAIL="arnaud@insert-koin.io"
+    POM_DEVELOPER_URL="https://github.com/arnaudgiuliani"
+
+    releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+    snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+}

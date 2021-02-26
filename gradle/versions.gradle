@@ -1,6 +1,9 @@
 ext {
     // Koin
+    koin_group = "io.insert-koin"
     koin_version = '3.0.1-alpha-5'
+    koin_description = "Koin - simple dependency injection for Kotlin "
+    koin_version_snapshot = false
 
     // Kotlin
     kotlin_version = '1.4.30'

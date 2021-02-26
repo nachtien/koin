@@ -6,6 +6,7 @@ build/
 local.properties
 classes/
 .DS_Store
+.gpg
 /build
 /captures
 
