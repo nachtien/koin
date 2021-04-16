@@ -20,9 +20,9 @@ android {
 dependencies {
     // Koin
 //    compile project(":koin-core-ext")
-    compile project(":koin-android-scope")
+    api project(":koin-android-scope")
     // Architecture ViewModel
-    compile("android.arch.lifecycle:extensions:$android_arch_version") {
+    api("android.arch.lifecycle:extensions:$android_arch_version") {
         exclude module: "livedata"
         exclude module: "runtime"
     }
