@@ -1,16 +1,23 @@
+apply from: "../gradle/versions.gradle"
 apply plugin: 'kotlin'
 
 archivesBaseName = 'koin-core'
-description = 'Koin - simple dependency injection for Kotlin - ' + archivesBaseName
 
 dependencies {
     // Kt
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    testCompile "junit:junit:$junit_version"
-    testCompile "org.mockito:mockito-inline:$mockito_version"
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
 
-    testCompile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"// Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"// Coroutines
 }
 
-apply from: '../gradle/publish.gradle'
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = [ "-Xopt-in=kotlin.RequiresOptIn" ]
+    }
+}
+
+apply from: '../gradle/sources.gradle'
+apply from: '../gradle/publish-maven-central.gradle'

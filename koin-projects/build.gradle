@@ -9,19 +9,19 @@ buildscript {
     dependencies {
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // Bintray
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintray_version"
+//        // Bintray
+//        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintray_version"
         // Dokka
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokka_version"
-        // AsciiDoc
-        classpath "org.asciidoctor:asciidoctor-gradle-plugin:$asciidoctor_version"
-        classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctor_pdf_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
         // Android
         classpath "com.android.tools.build:gradle:$android_gradle_version"
-        classpath "digital.wup:android-maven-publish:$android_maven_publish"
+//        classpath "digital.wup:android-maven-publish:$android_maven_publish"
     }
 }
 
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
 allprojects {
 
     repositories {
@@ -29,24 +29,17 @@ allprojects {
         jcenter()
     }
 
-    group = 'org.koin'
+    group = 'io.insert-koin'
     version = "$koin_version"
 
-    // asciidoctor
-    apply plugin: 'org.asciidoctor.convert'
-    asciidoctor {
-        backends = ["html5"]
-    }
-
-    // Dokka
-    apply plugin: 'org.jetbrains.dokka'
-    dokka {
-        outputFormat = 'html'
-        outputDirectory = "$buildDir/javadoc"
-        reportUndocumented = true
-    }
-    task dokkaJar(type: Jar) {
-        classifier = 'javadoc'
-        from dokka
-    }
+//    // Dokka
+//    apply plugin: 'org.jetbrains.dokka'
+//    dokka {
+//        outputFormat = 'html'
+//        outputDirectory = "$buildDir/javadoc"
+//    }
+//    task dokkaJar(type: Jar) {
+//        classifier = 'javadoc'
+//        from dokka
+//    }
 }
