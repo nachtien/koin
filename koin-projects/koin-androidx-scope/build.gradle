@@ -19,8 +19,8 @@ aandroid {
 
 dependencies {
     api project(":koin-android") //"org.koin:koin-android:$koin_version"
-    implementation "androidx.appcompat:appcompat:$androidx_lib_version"
-    implementation("androidx.lifecycle:lifecycle-common:$androidx_arch_version") {
+    api "androidx.appcompat:appcompat:$androidx_lib_version"
+    api("androidx.lifecycle:lifecycle-common:$androidx_arch_version") {
         exclude group: "core-runtime"
     }
 
