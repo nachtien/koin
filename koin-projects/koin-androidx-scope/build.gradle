@@ -7,13 +7,13 @@ ext {
     pom_description = "Koin project - koin-androidx-scope"
 }
 
-android {
+aandroid {
     compileSdkVersion android_target_version
     buildToolsVersion android_build_tools_version
 
     defaultConfig {
         minSdkVersion android_min_version
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 }
 
@@ -29,4 +29,5 @@ dependencies {
 
 }
 
-apply from: '../gradle/publish-android.gradle'
+apply from: '../gradle/sources-android.gradle'
+apply from: '../gradle/publish-maven-central.gradle'
