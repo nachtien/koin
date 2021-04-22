@@ -7,7 +7,7 @@ ext {
     pom_description = "Koin project - koin-androidx-scope"
 }
 
-aandroid {
+android {
     compileSdkVersion android_target_version
     buildToolsVersion android_build_tools_version
 
