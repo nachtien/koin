@@ -1,10 +1,13 @@
 package org.koin.example
 
+import org.koin.api.MyApiModule
+import org.koin.core.annotations.scanAnnotations
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.core.time.measureDuration
+import org.koin.ui.UIModule
 
 class CoffeeApp : KoinComponent {
     val maker: CoffeeMaker by inject()
@@ -12,8 +15,14 @@ class CoffeeApp : KoinComponent {
 
 fun main() {
     startKoin {
-        printLogger()
-        modules(listOf(coffeeAppModule))
+        printLogger(Level.DEBUG)
+//        modules(listOf(coffeeAppModule))
+        scanAnnotations(
+            scanPackage = "org.koin.example"
+        )
+//        scanAnnotations(
+//            modules = listOf(MyApiModule::class,UIModule::class)
+//        )
     }
 
     val coffeeShop = CoffeeApp()
@@ -22,7 +31,7 @@ fun main() {
     }
 }
 
-fun measureDuration(msg : String, code: () -> Unit): Double {
+fun measureDuration(msg: String, code: () -> Unit): Double {
     val duration = measureDuration(code)
     println("$msg in $duration ms")
     return duration

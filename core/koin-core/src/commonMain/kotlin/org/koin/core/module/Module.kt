@@ -24,6 +24,7 @@ import org.koin.core.qualifier.Qualifier
 import org.koin.core.qualifier.TypeQualifier
 import org.koin.core.registry.ScopeRegistry.Companion.rootScopeQualifier
 import org.koin.dsl.ScopeDSL
+import kotlin.reflect.KClass
 
 /**
  * Koin Module
@@ -81,6 +82,22 @@ class Module {
             eagerInstances.add(instanceFactory)
         }
         return Pair(this, instanceFactory)
+    }
+
+    internal fun <T : Any> single(
+        type : KClass<T>,
+        qualifier: Qualifier? = null,
+        createdAtStart: Boolean = false,
+        definition: Definition<T>
+    ): Pair<Module, InstanceFactory<T>> {
+        val def = createDefinition(type,Kind.Singleton, qualifier, definition, scopeQualifier = rootScopeQualifier)
+        val mapping = indexKey(def.primaryType, qualifier, rootScopeQualifier)
+        val instanceFactory = SingleInstanceFactory(def)
+        saveMapping(mapping, instanceFactory)
+        if (createdAtStart) {
+            eagerInstances.add(instanceFactory)
+        }
+        return Pair(this, instanceFactory as InstanceFactory<T>)
     }
 
     @PublishedApi

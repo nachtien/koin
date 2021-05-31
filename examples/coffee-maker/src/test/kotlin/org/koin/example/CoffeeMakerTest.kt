@@ -5,6 +5,7 @@ import io.mockk.mockkClass
 import io.mockk.verifySequence
 import org.junit.Rule
 import org.junit.Test
+import org.koin.core.annotations.scanAnnotations
 import org.koin.core.logger.Level
 import org.koin.test.KoinTest
 import org.koin.test.KoinTestRule
@@ -25,7 +26,8 @@ class CoffeeMakerTest : KoinTest {
    @get:Rule
    val koinTestRule = KoinTestRule.create {
        printLogger(Level.DEBUG)
-       modules(coffeeAppModule)
+//       modules(coffeeAppModule)
+       scanAnnotations("org.koin.example")
    }
 
    @Test

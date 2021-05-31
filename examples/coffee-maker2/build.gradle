@@ -17,7 +17,6 @@ archivesBaseName = 'example-coffee-maker'
 dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation project(":koin-annotations")
-    implementation project(":coffee-maker2")
 
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"

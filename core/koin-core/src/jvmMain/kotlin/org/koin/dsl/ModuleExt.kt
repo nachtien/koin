@@ -19,6 +19,7 @@ import org.koin.core.instance.InstanceFactory
 import org.koin.core.instance.newInstance
 import org.koin.core.module.Module
 import org.koin.core.qualifier.Qualifier
+import kotlin.reflect.KClass
 
 /**
  * Create a Single definition for given type T
@@ -31,6 +32,14 @@ inline fun <reified T : Any> Module.single(
     createOnStart: Boolean = false,
 ): Pair<Module, InstanceFactory<T>> {
     return single(qualifier, createOnStart) { params -> newInstance(T::class, params) }
+}
+
+fun <T : Any> Module.single(
+    type : KClass<T>,
+    qualifier: Qualifier? = null,
+    createOnStart: Boolean = false,
+): Pair<Module, InstanceFactory<T>> {
+    return single(type,qualifier, createOnStart) { params -> newInstance(type, params) } as Pair<Module, InstanceFactory<T>>
 }
 
 /**

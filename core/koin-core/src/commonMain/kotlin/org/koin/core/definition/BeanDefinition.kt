@@ -103,9 +103,20 @@ inline fun <reified T> createDefinition(
     secondaryTypes: List<KClass<*>> = emptyList(),
     scopeQualifier: Qualifier
 ): BeanDefinition<T> {
+    return createDefinition(T::class,kind, qualifier, definition, secondaryTypes, scopeQualifier) as BeanDefinition<T>
+}
+
+inline fun createDefinition(
+    kClass: KClass<*>,
+    kind: Kind = Kind.Singleton,
+    qualifier: Qualifier? = null,
+    noinline definition: Definition<*>,
+    secondaryTypes: List<KClass<*>> = emptyList(),
+    scopeQualifier: Qualifier
+): BeanDefinition<*> {
     return BeanDefinition(
         scopeQualifier,
-        T::class,
+        kClass,
         qualifier,
         definition,
         kind,
