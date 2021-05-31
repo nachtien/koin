@@ -3,6 +3,9 @@ package org.koin.example
 import org.koin.core.annotations.ComponentScan
 import org.koin.core.annotations.Module
 import org.koin.core.annotations.Single
+import org.koin.dsl.bind
+import org.koin.dsl.module
+import org.koin.dsl.single
 
 //val coffeeAppModule = module {
 //    single { CoffeeMaker(get(), get()) }

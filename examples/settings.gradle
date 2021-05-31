@@ -1,8 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+}
 
 // Main
 include 'coffee-maker'
 include 'coffee-maker2'
 include 'koin-annotations'
+include 'koin-ksp'
 
 //include 'android-perfs'
 //

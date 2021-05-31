@@ -1,5 +1,6 @@
 package org.koin.example
 
+import defaultModule
 import org.koin.api.MyApiModule
 import org.koin.core.annotations.scanAnnotations
 import org.koin.core.component.KoinComponent
@@ -20,6 +21,7 @@ fun main() {
         scanAnnotations(
             scanPackage = "org.koin.example"
         )
+        modules(defaultModule)
 //        scanAnnotations(
 //            modules = listOf(MyApiModule::class,UIModule::class)
 //        )

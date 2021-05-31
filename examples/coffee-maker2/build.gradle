@@ -2,21 +2,30 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
+        google()
+        gradlePluginPortal()
         jcenter()
     }
     dependencies {
+        classpath 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.10-1.0.0-beta01'
         classpath "io.insert-koin:koin-gradle-plugin:$koin_version"
     }
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'koin'
+//apply plugin: "com.google.devtools.ksp"
+//
+//sourceSets {
+//    main.kotlin.srcDirs += 'build/generated/ksp/main/kotlin/'
+//}
 
 archivesBaseName = 'example-coffee-maker'
 
 dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation project(":koin-annotations")
+//    ksp project(":koin-ksp")
 
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"

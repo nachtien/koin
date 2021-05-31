@@ -3,8 +3,9 @@ buildscript {
     apply from: "../gradle/versions-android.gradle"
 
     repositories {
-        google()
         mavenCentral()
+        google()
+        gradlePluginPortal()
         jcenter()
     }
     dependencies {
